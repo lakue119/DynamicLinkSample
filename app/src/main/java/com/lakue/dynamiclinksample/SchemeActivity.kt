@@ -50,11 +50,12 @@ class SchemeActivity : AppCompatActivity() {
                         SCHEME_COMMENT -> {
                             //공유 타입이 comment로 들어왔을 때 처리
                             val code: String = deeplink.getQueryParameter(PARAM_ID)!!
-                            Toast.makeText(this, "SCHEME_PHEED 타입 id : $code 데이터 보여주기", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, "SCHEME_COMMENT 타입 id : $code 데이터 보여주기", Toast.LENGTH_LONG).show()
                             val intent = Intent(this@SchemeActivity, MainActivity::class.java)
                             startActivity(intent)
                         }
                         SCHEME_MAIN -> {
+                            //공유 타입이 main으로 들어왔을 때 처리
                             Toast.makeText(this, "메인 이동", Toast.LENGTH_LONG).show()
                             val intent = Intent(this@SchemeActivity, MainActivity::class.java)
                             startActivity(intent)
