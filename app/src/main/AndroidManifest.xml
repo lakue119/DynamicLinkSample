@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DynamicLinkSample">
         <activity
-            android:name=".SchemeActivity"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,6 +18,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SchemeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="lakue.com"
+                    android:scheme="https"/>
+
+                <data
+                    android:host="lakue.com"
+                    android:scheme="http"/>
+
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
