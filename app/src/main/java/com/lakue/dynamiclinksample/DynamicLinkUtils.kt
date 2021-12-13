@@ -12,14 +12,19 @@ object DynamicLinkUtils {
     val TAG = DynamicLinkUtils::class.java.name
 
     private fun getDeepLink(scheme: String, key: String?, pheedId: String?): Uri {
-        return if(key == null){
+        return if (key == null) {
             Uri.parse("https://lakue.com/${scheme}")
         } else {
             Uri.parse("https://lakue.com/${scheme}/?${key}=$pheedId")
         }
     }
 
-    fun onDynamicLinkClick(activity: Activity, scheme: String, key: String? = null, pheedId: String? = null) {
+    fun onDynamicLinkClick(
+        activity: Activity,
+        scheme: String,
+        key: String? = null,
+        pheedId: String? = null
+    ) {
         FirebaseDynamicLinks.getInstance().createDynamicLink()
             .setLink(getDeepLink(scheme, key, pheedId))
             .setDynamicLinkDomain("lakue.page.link")
@@ -29,7 +34,8 @@ object DynamicLinkUtils {
                     .build()
             )
             .buildShortDynamicLink()
-            .addOnCompleteListener(activity
+            .addOnCompleteListener(
+                activity
             ) { task ->
                 if (task.isSuccessful) {
                     val shortLink: Uri = task.result.shortLink!!
